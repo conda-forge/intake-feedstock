@@ -1,4 +1,4 @@
-{% set version = "0.4.1" %}
+{% set version = "0.4.2" %}
 
 package:
   name: intake
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: f47e53aa764eeadf6adcc667b9817b1ad32496477476da0b982d4fc0744b40ef
+  sha256: b22322f76b35fbcd0b5224b1c9dd0d9df67b543b4c58aab1807c41fdbd902acc
 
 build:
   number: 0
