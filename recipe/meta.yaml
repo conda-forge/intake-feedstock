@@ -39,8 +39,6 @@ requirements:
 test:
   source_files:
     - intake
-  requires:
-    - pytest
   imports:
     - intake
     - intake.auth
@@ -60,7 +58,6 @@ test:
   commands:
     - intake list --help
     - intake-server --help
-    - pytest -rxs intake
 
 about:
   home: https://github.com/ContinuumIO/intake
