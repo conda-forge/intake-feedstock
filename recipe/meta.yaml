@@ -1,4 +1,4 @@
-{% set version = "0.5.4" %}
+{% set version = "0.5.5" %}
 
 package:
   name: intake
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: 81c3bdadbb81ec10c923b89e118c229d977a584ccbe27466f8fde41c0c274c3f
+  sha256: bcb6558a9a7ccb1a3c5b7d1e3777ac8faed80894ef7826df119642430070ef7a
 
 build:
   number: 0
@@ -14,7 +14,7 @@ build:
   entry_points:
     - intake-server = intake.cli.server.__main__:main
     - intake = intake.cli.client.__main__:main
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
 
 requirements:
   host:
@@ -64,7 +64,7 @@ about:
   home: https://github.com/ContinuumIO/intake
   license: BSD-2-Clause
   license_family: BSD
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+  license_file: {{ environ["RECIPE_DIR"] }}/LICENSE
   summary: Data load and catalog system
 
 extra:
