@@ -1,4 +1,4 @@
-{% set version = "0.5.4" %}
+{% set version = "0.5.5" %}
 
 package:
   name: intake
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: 81c3bdadbb81ec10c923b89e118c229d977a584ccbe27466f8fde41c0c274c3f
+  sha256: bcb6558a9a7ccb1a3c5b7d1e3777ac8faed80894ef7826df119642430070ef7a
 
 build:
   number: 0
@@ -14,28 +14,27 @@ build:
   entry_points:
     - intake-server = intake.cli.server.__main__:main
     - intake = intake.cli.client.__main__:main
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.5
+    - python >=3.6
     - pip
   run:
-    - python >=3.5
-    - numpy
-    - msgpack-python
-    - msgpack-numpy
-    - requests
-    - tornado >=4.5.1
-    - jinja2
-    - ruamel.yaml >=0.15.0
-    - dask >=2.2
-    - python-snappy
+    - python >=3.6
     - appdirs
     - entrypoints
-    # - holoviews
-    # - ipywidgets >=7.2
-    # - pandas
+    - jinja2
+    - msgpack-python
+    - numpy
+    - pyyaml
+    - requests
+    - dask >=1.0
+    # dask[bag]
+    - cloudpickle >=0.2.2
+    - fsspec >=0.6.0
+    - toolz >=0.8.2
+    - partd >=0.3.10
 
 test:
   source_files:
@@ -43,28 +42,25 @@ test:
   imports:
     - intake
     - intake.auth
-    - intake.auth.tests
     - intake.catalog
-    - intake.catalog.tests
     - intake.cli
     - intake.cli.client
-    - intake.cli.client.tests
     - intake.cli.server
-    - intake.cli.server.tests
     - intake.container
     - intake.gui
     - intake.source
-    - intake.source.tests
-    - intake.tests
   commands:
+    - pip check
     - intake list --help
     - intake-server --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/ContinuumIO/intake
   license: BSD-2-Clause
   license_family: BSD
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+  license_file: LICENSE
   summary: Data load and catalog system
 
 extra:
