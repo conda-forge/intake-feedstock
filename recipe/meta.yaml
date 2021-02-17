@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "0.6.1" %}
 
 package:
   name: intake
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: 0c284abeb74927a7366dcab6cefc010c4d050365b8af61c37326a2473a490a4e
+  sha256: f09800203fcaf1512f9234e54dbd07ec2b5217aafd21716385725ec052f5a52e
 
 build:
   number: 0
@@ -32,7 +32,7 @@ requirements:
     - dask >=1.0
     # dask[bag]
     - cloudpickle >=0.2.2
-    - fsspec >=0.6.0
+    - fsspec >=0.7.4
     - toolz >=0.8.2
     - partd >=0.3.10
 
@@ -43,11 +43,6 @@ test:
     - intake
     - intake.auth
     - intake.catalog
-    - intake.cli
-    - intake.cli.client
-    - intake.cli.server
-    - intake.container
-    - intake.gui
     - intake.source
   commands:
     - pip check
