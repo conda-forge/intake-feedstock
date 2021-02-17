@@ -5,11 +5,9 @@ Home: https://github.com/ContinuumIO/intake
 
 Package license: BSD-2-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intake-feedstock/blob/master/LICENSE.txt)
 
 Summary: Data load and catalog system
-
-
 
 Current build status
 ====================
