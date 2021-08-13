@@ -30,6 +30,11 @@ requirements:
     - pyyaml
     - dask
     - fsspec >=0.7.4
+   # extra_require - server
+    - requests
+    - msgpack-python
+    - python-snappy
+    - tornado
 
 test:
   source_files:
