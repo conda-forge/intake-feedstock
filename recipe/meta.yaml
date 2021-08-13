@@ -18,23 +18,18 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.7
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.6
+    - python >=3.7
     - appdirs
     - entrypoints
     - jinja2
-    - msgpack-python
-    - numpy
     - pyyaml
-    - requests
-    - dask >=1.0
-    # dask[bag]
-    - cloudpickle >=0.2.2
+    - dask
     - fsspec >=0.7.4
-    - toolz >=0.8.2
-    - partd >=0.3.10
 
 test:
   source_files:
@@ -57,6 +52,8 @@ about:
   license_family: BSD
   license_file: LICENSE
   summary: Data load and catalog system
+  dev_url: https://github.com/intake/intake
+  doc_url: https://intake.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
