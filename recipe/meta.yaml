@@ -1,4 +1,4 @@
-{% set version = "0.6.3" %}
+{% set version = "0.6.5" %}
 
 package:
   name: intake
@@ -6,10 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: f64543353f30d9440b953984f78b7a0954e5756d70c64243609d307ba488014f
+  sha256: 06f8044b85e139e2a98c1c5e20c156ba4f4bceed62794742c1648f98dca861a5
 
 build:
   number: 0
+  # intake and python-snappy currently aren't available on s390x
   noarch: python
   entry_points:
     - intake-server = intake.cli.server.__main__:main
@@ -18,7 +19,7 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
     - setuptools
     - wheel
@@ -29,12 +30,13 @@ requirements:
     - jinja2
     - pyyaml
     - dask
-    - fsspec >=0.7.4
+    - fsspec >=2021.7.0
    # extra_require - server
-    - requests
     - msgpack-python
     - python-snappy
     - tornado
+   # extra_require - remote
+    - requests
 
 test:
   source_files:
@@ -50,6 +52,8 @@ test:
     - intake-server --help
   requires:
     - pip
+  downstreams:
+    - intake-xarray
 
 about:
   home: https://github.com/ContinuumIO/intake
