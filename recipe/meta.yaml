@@ -1,4 +1,4 @@
-{% set version = "0.6.5" %}
+{% set version = "0.6.6" %}
 
 package:
   name: intake
@@ -6,16 +6,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: 06f8044b85e139e2a98c1c5e20c156ba4f4bceed62794742c1648f98dca861a5
+  sha256: 99b31484dbaca0047098cb7bbfb72cea8d6fcb004dea9a5fe145731b1c65a2ca
+
 
 build:
   number: 0
   # intake and python-snappy currently aren't available on s390x
-  noarch: python
+  skip: True  # [py<37 or s390x]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - intake-server = intake.cli.server.__main__:main
     - intake = intake.cli.client.__main__:main
-  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -24,12 +25,12 @@ requirements:
     - setuptools
     - wheel
   run:
-    - python >=3.7
+    - python
     - appdirs
     - entrypoints
     - jinja2
     - pyyaml
-    - dask
+    - dask-core
     - fsspec >=2021.7.0
    # extra_require - server
     - msgpack-python
@@ -37,30 +38,37 @@ requirements:
     - tornado
    # extra_require - remote
     - requests
+  run_constrained:
+   # extra_require - plot
+    - bokeh
+    - hvplot
+    - panel >=0.7.0
 
 test:
-  source_files:
-    - intake
   imports:
     - intake
     - intake.auth
     - intake.catalog
     - intake.source
+  requires:
+    - pip
   commands:
     - pip check
     - intake list --help
     - intake-server --help
-  requires:
-    - pip
-  downstreams:
-    - intake-xarray
 
 about:
-  home: https://github.com/ContinuumIO/intake
+  home: https://github.com/intake/intake
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
   summary: Data load and catalog system
+  description: |
+    Intake is a lightweight set of tools for loading and sharing data in data science projects. Intake helps you:
+    * Load data from a variety of formats (see the current list of known plugins) into containers you already know, like Pandas dataframes, Python lists, NumPy arrays, and more.
+    * Convert boilerplate data loading code into reusable Intake plugins.
+    * Describe data sets in catalog files for easy reuse and sharing between projects and with others.
+    * Share catalog information (and data sets) over the network with the Intake server.
   dev_url: https://github.com/intake/intake
   doc_url: https://intake.readthedocs.io/en/latest/
 
