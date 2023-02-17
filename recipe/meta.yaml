@@ -1,4 +1,4 @@
-{% set version = "0.6.6" %}
+{% set version = "0.6.7" %}
 
 package:
   name: intake
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: 99b31484dbaca0047098cb7bbfb72cea8d6fcb004dea9a5fe145731b1c65a2ca
+  sha256: da77bc4107a4cd5b3a7f669864a2a5b93e4d9c9fc6d9f57668d86435d72e0bec
 
 
 build:
   number: 0
   # intake and python-snappy currently aren't available on s390x
-  skip: True  # [py<37 or s390x]
+  skip: True  # [py<38 or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - intake-server = intake.cli.server.__main__:main
@@ -30,16 +30,16 @@ requirements:
     - entrypoints
     - jinja2
     - pyyaml
-    - dask-core
+    - dask >=1.0
     - fsspec >=2021.7.0
-   # extra_require - server
+    # extra_require - server
     - msgpack-python
     - python-snappy
     - tornado
-   # extra_require - remote
+    # extra_require - remote
     - requests
   run_constrained:
-   # extra_require - plot
+    # extra_require - plot
     - bokeh
     - hvplot
     - panel >=0.7.0
