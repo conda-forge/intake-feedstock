@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: intake
@@ -6,53 +6,35 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: ce3b8bce87f9831823f87936c546f898dbb718985770124c7cc569061726f3b6
+  sha256: c94f1bbfb2e0a70d15aa3c5c921e2d12de218e9e34b08e9414418f2ab4445380
 
 build:
   number: 0
   noarch: python
-  entry_points:
-    - intake-server = intake.cli.server.__main__:main
-    - intake = intake.cli.client.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
   run:
-    - python >=3.6
+    - python >=3.8
     - appdirs
-    - entrypoints
-    - jinja2
-    - msgpack-python
-    - numpy
+    - fsspec >=2023.0.0
     - pyyaml
-    - requests
-    - dask >=1.0
-    # dask[bag]
-    - cloudpickle >=0.2.2
-    - fsspec >=0.7.4
-    - toolz >=0.8.2
-    - partd >=0.3.10
 
 test:
   source_files:
     - intake
   imports:
     - intake
-    - intake.auth
-    - intake.catalog
-    - intake.source
   commands:
     - pip check
-    - intake list --help
-    - intake-server --help
   requires:
     - pip
 
 about:
-  home: https://github.com/ContinuumIO/intake
+  home: https://github.com/intake/intake
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
