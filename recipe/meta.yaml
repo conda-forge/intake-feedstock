@@ -11,48 +11,30 @@ source:
 build:
   number: 0
   noarch: python
-  entry_points:
-    - intake-server = intake.cli.server.__main__:main
-    - intake = intake.cli.client.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
   run:
-    - python >=3.6
+    - python >=3.8
     - appdirs
-    - entrypoints
-    - jinja2
-    - msgpack-python
-    - numpy
+    - fsspec >=2023.0.0
     - pyyaml
-    - requests
-    - dask >=1.0
-    # dask[bag]
-    - cloudpickle >=0.2.2
-    - fsspec >=0.7.4
-    - toolz >=0.8.2
-    - partd >=0.3.10
 
 test:
   source_files:
     - intake
   imports:
     - intake
-    - intake.auth
-    - intake.catalog
-    - intake.source
   commands:
     - pip check
-    - intake list --help
-    - intake-server --help
   requires:
     - pip
 
 about:
-  home: https://github.com/ContinuumIO/intake
+  home: https://github.com/intake/intake
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
