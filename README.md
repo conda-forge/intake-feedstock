@@ -3,7 +3,7 @@ About intake-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intake-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/ContinuumIO/intake
+Home: https://github.com/intake/intake
 
 Package license: BSD-2-Clause
 
