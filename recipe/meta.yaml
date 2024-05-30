@@ -68,7 +68,7 @@ about:
     * Describe data sets in catalog files for easy reuse and sharing between projects and with others.
     * Share catalog information (and data sets) over the network with the Intake server.
   dev_url: https://github.com/intake/intake
-  doc_url: https://intake.readthedocs.io/en/latest/
+  doc_url: https://intake.readthedocs.io/
 
 extra:
   recipe-maintainers:
