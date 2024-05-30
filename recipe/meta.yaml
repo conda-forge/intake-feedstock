@@ -11,7 +11,7 @@ source:
 build:
   number: 0
   skip: True  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
   entry_points:
     - intake-server = intake.cli.server.__main__:main
     - intake = intake.cli.client.__main__:main
