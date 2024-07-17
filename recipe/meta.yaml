@@ -20,9 +20,10 @@ requirements:
     - setuptools_scm
   run:
     - python >=3.8
-    - appdirs
+    - platformdirs
     - fsspec >=2023.0.0
     - pyyaml
+    - networkx
 
 test:
   source_files:
