@@ -1,4 +1,4 @@
-{% set version = "2.0.5" %}
+{% set version = "2.0.6" %}
 
 package:
   name: intake
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz
-  sha256: f602c608a1968bfc288769b3df671a9425ab24692f22266ca7c63f72b66061a6
+  sha256: 5ca38d335bd6ff5da7f68186563459a54f54c5448b39c7ca82bbf86d6a28d3f6
 
 build:
   number: 0
@@ -20,9 +20,10 @@ requirements:
     - setuptools_scm
   run:
     - python >=3.8
-    - appdirs
+    - platformdirs
     - fsspec >=2023.0.0
     - pyyaml
+    - networkx
 
 test:
   source_files:
